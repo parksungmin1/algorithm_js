@@ -1,16 +1,16 @@
 function solution(board) {
     let n = board.length;
-    const dx = [0,0,-1,-1,-1,1,1,1];
-    const dy = [1,-1,1,0,-1,1,0,-1];
+    let cnt = 0;
+    
     for(let i=0; i<n; i++){
         for(let j=0; j<n; j++){
-         if(board[i][j] !==1 ) continue;
-         for(let k=0;k<8; k++){
-            const nx= j+dx[k];
-            const ny = i+dy[k];    
-          if(nx>=0 && nx<n && ny>=0 && ny<n && board[ny][nx]!==1){
-            board[ny][nx] = 2;}}
-            }
-        }  
-    return board.reduce((a,c) => a+c.reduce((a,c)=> c===0?a+1:a ,0),0);
+            if(board[i][j] === 1){
+                cnt++;  
+           }    
+        }
+    }
+    
+    let result = n*n -3*(2+cnt);
+    if(result < 0 ) return 0;
+    return result;
 }
