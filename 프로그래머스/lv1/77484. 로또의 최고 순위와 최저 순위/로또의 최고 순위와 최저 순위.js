@@ -1,14 +1,8 @@
 function solution(lottos, win_nums) {
-    let count = 0;
-     for(let i=0; i<lottos.length; i++){
-        for(let j=0; j<win_nums.length; j++){
-            if(lottos[i] === win_nums[j])
-                count++;
-            }
-    }
+    let mincounting = lottos.filter((element) => win_nums.includes(element)).length;
   
     let counting = lottos.filter((element) => element === 0).length;
-    let finalcount = count + counting;
+    let finalcount = mincounting + counting;
     let best; let worst;
     let arr = [];
     
@@ -19,11 +13,11 @@ function solution(lottos, win_nums) {
     else if(finalcount === 6) best = 1;
     else best = 6;
     
-    if(count === 2) worst = 5; 
-    else if(count === 3) worst = 4;
-    else if(count === 4) worst = 3;
-    else if(count === 5) worst = 2;
-    else if(count === 6) worst = 1;
+    if(mincounting === 2) worst = 5; 
+    else if(mincounting === 3) worst = 4;
+    else if(mincounting === 4) worst = 3;
+    else if(mincounting === 5) worst = 2;
+    else if(mincounting === 6) worst = 1;
     else worst = 6;
     
     arr.push(best,worst);
